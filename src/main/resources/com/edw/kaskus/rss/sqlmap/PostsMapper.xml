@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edw.kaskus.rss.mapper.PostsMapper" >
+    <resultMap id="BaseResultMap" type="com.edw.kaskus.rss.bean.Posts" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="post_id" property="postId" jdbcType="VARCHAR" />
+        <result column="post_author" property="postAuthor" jdbcType="VARCHAR" />
+        <result column="post_date" property="postDate" jdbcType="TIMESTAMP" />
+        <result column="thread_id" property="threadId" jdbcType="VARCHAR" />
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.edw.kaskus.rss.bean.Posts" extends="BaseResultMap" >
+        <result column="post_content" property="postContent" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <insert id="insert" parameterType="com.edw.kaskus.rss.bean.Posts" >
+        insert into posts (id, post_id, post_author, 
+        post_date, thread_id, post_content
+        )
+        values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=VARCHAR}, #{postAuthor,jdbcType=VARCHAR}, 
+        #{postDate,jdbcType=TIMESTAMP}, #{threadId,jdbcType=VARCHAR}, #{postContent,jdbcType=LONGVARCHAR}
+        )
+    </insert>
+  
+</mapper>

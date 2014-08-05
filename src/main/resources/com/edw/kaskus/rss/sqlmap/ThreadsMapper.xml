@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.edw.kaskus.rss.mapper.ThreadsMapper" >
+    <resultMap id="BaseResultMap" type="com.edw.kaskus.rss.bean.Threads" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="thread_id" property="threadId" jdbcType="VARCHAR" />
+        <result column="thread_name" property="threadName" jdbcType="VARCHAR" />
+    </resultMap>
+  
+    <insert id="insert" parameterType="com.edw.kaskus.rss.bean.Threads" >
+        insert into threads (id, thread_id, thread_name
+        )
+        values (#{id,jdbcType=INTEGER}, #{threadId,jdbcType=VARCHAR}, #{threadName,jdbcType=VARCHAR}
+        )
+    </insert>
+  
+</mapper>
